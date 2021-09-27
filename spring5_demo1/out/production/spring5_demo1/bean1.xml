@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:util="http://www.springframework.org/schema/util"
+       xmlns:p="http://www.springframework.org/schema/p"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/util https://www.springframework.org/schema/util/spring-util.xsd">
+     <!--配置User对象的创建-->
+    <bean id="user" class="com.atguigu.spring.User"></bean>
+    <!--set方法注入属性-->
+    <bean id="book" class="com.atguigu.spring.Book">
+        <!--使用property完成属性的注入
+            name：类里面属性的名称
+            value：向属性注入值
+        -->
+        <property name="bName" value="你当像鸟飞往你的山"></property>
+        <property name="bAuthor" value="作者"></property>
+        <!--null值-->
+<!--        <property name="address">-->
+<!--            <null/>-->
+<!--        </property>-->
+        <!--属性值中包含特殊符号
+            1.特殊符号转义
+            2.特殊符号写到CDATE中
+        -->
+        <property name="address">
+            <value><![CDATA[<<南京>>]]></value>
+        </property>
+    </bean>
+
+    <!--有参构造方法注入属性-->
+    <bean id="orders" class="com.atguigu.spring.Orders">
+        <constructor-arg name="oName" value="订单"></constructor-arg>
+        <constructor-arg name="address" value="China"></constructor-arg>
+    </bean>
+
+    <!--p名称空间注入属性（简化set）-->
+<!--    <bean id="book" class="com.atguigu.spring.Book" p:bName="三毛流浪记" p:bAuthor="三毛"></bean>-->
+</beans>
